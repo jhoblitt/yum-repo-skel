@@ -54,3 +54,25 @@ place.  For example, to add RHEL5 PPC support:
     mkdir 5/ppc64
     # copy some .rpms --> 5/ppc
     makefile
+
+PUPPET EXAMPLE
+==============
+
+Here is a simple example of a puppet class that will setup the repo with the
+Yumrepo type.  It should work for RHEL/Centos 3/4/5/6 and beyond.
+
+    class yum-local {
+
+      case $operatingsystem {
+        'redhat', 'centos': {
+          yumrepo { 'local':
+            descr => 'my local repo',
+            baseurl => 'http://example.org/nso/$releasever/$basearch',
+            enabled => 1,
+            gpgcheck => 0,
+            priority => 1,
+          }
+        }
+      }
+    }
+
