@@ -61,7 +61,7 @@ PUPPET EXAMPLE
 Here is a simple example of a puppet class that will setup the repo with the
 Yumrepo type.  It should work for RHEL/Centos 3/4/5/6 and beyond.
 
-    class yum-local {
+    class yum_local {
 
       case $operatingsystem {
         'redhat', 'centos': {
